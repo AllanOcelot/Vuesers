@@ -1,18 +1,27 @@
 <script setup lang="ts">
+  import { ref, onMounted } from 'vue'
+  import axios from 'axios'
   import ProjectCard from './ProjectCard.vue';
 
-  // For testing only 
-  interface Project {
-    title: string,
-    desc: string,
-    id: number
+
+  // so weird needing to declare what is and isn't reactive!
+  const projectsData = ref([]);
+
+  function getProjects(){
+    axios.get('http://127.0.0.1:3000/projects')
+    .then((response) => {
+      console.log(response.data)
+      projectsData.value = response.data;
+    }).catch(error => {
+      console.log('Could not fetch posts ' + error);
+    })
   }
 
-  const project: Project = {
-    title: "Example project name",
-    desc: "Example project desc",
-    id: 0
-  }
+
+  // On mount, we want to fetch the list of projects.
+  onMounted(() => {
+    getProjects()
+  })
 
 </script>
 
@@ -23,7 +32,7 @@
       <p>Data last updated on xx/xx/xxxx</p>
     </div>
     <div class="main-project-container">
-      <ProjectCard :project="project" />
+      <ProjectCard v-for="item in projectsData" :project="item" />
     </div>
   </div>
 </template>

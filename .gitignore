@@ -29,3 +29,4 @@ coverage
 *.sln
 *.sw?
 Server/package-lock.json
+Client/package-lock.json
