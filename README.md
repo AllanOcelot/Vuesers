@@ -38,6 +38,8 @@ npm run build
 # 'Server'
 The Server is a simple Node Express app, it set's up endpoints to interact with an instance of [Pocketbase](https://github.com/pocketbase/pocketbase). Again, I'm learning Pocketbase - so any improvements to implementations etc are welcome.
 
-
+```sh
+node app.js
+```
 
 
