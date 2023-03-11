@@ -26,10 +26,16 @@
       border-bottom: 1px solid #f1f1f1;
       text-align: center;
       .router-home {
-        color: #00BD7E;
+        color: #1cf8af;
         font-size: 24px;
         font-weight: bold; 
+        opacity: 0.7;
         text-decoration: none;
+        transition: all 0.3s;
+        &:hover{
+          opacity: 1;
+          text-decoration: underline;
+        }
       }
       p {
         cursor: default;

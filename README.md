@@ -1,46 +1,43 @@
 # Vuesers
+Vuesers is platform to view open source VueJS projects.
+The idea is to add in a dash of extremely light social media - so users can contribute to projects, get feedback and hopefully build up a nice little community of passionate VueJS dev's across the globe, helping each other out.
 
-This template should help get you started developing with Vue 3 in Vite.
+
+## RoadMap
+Vuesers is using [AgileSeason](https://agileseason.com/#/shared/board/d6594af8828cfd9b519f4bd536c8a828) for it's current roadmap / issue tracking. Agile Season is another open source VueJS project, check them out [here](https://github.com/agileseason/agileseason)
 
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-## Type Support for `.vue` Imports in TS
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Designs
+Designs for the frontend are compressed, MVP's designed in Figma. They should serve as MVP only, additional improvement's and tweaks will come on a priority basis. 
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+# Client
+The client is a Vue3, Typescript project. I am attempting to learn Vue3 best practice, so feel free to feedback and improve, if there's a lesson to be learned.
+## Project Setup ( Client )
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Compile and Hot-Reload for Development ( Client)
 
 ```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Type-Check, Compile and Minify for Production ( Client)
 
 ```sh
 npm run build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+# 'Server'
+The Server is a simple Node Express app, it set's up endpoints to interact with an instance of [Pocketbase](https://github.com/pocketbase/pocketbase). Again, I'm learning Pocketbase - so any improvements to implementations etc are welcome.
 
-```sh
-npm run test:unit
-```
+
+
+
