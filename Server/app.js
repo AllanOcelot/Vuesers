@@ -26,6 +26,9 @@ app.use(function(req, res, next) {
 });
 
 
+
+
+
 ///////////////////////////////////////////////////
 //////// AUTH / PB Related work
 ///////////////////////////////////////////////////
@@ -46,7 +49,7 @@ const AuthenticateNormalUser = async function(username, pw){
 // Fetch a listing of all records.
 async function getAllRecords(){
   const isAuthed = await AuthenticateNormalUser(process.env.ROLE_VIEW, process.env.ROLE_VIEW_PW);
-  if(isAuthed){
+  if(pb.authStore.isValid){
     const records = await pb.collection('projects').getFullList({
       sort: '-created',
     });
