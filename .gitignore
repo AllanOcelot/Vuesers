@@ -28,5 +28,4 @@ coverage
 *.njsproj
 *.sln
 *.sw?
-Server/package-lock.json
-Client/package-lock.json
+*/package-lock.json
