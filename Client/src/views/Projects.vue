@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref, onMounted } from 'vue'
   import axios from 'axios'
-  import ProjectCard from './ProjectCard.vue';
+  import ProjectCard from '@/components/ProjectCard.vue';
 
 
   // I've always liked weird/quircky CTA messages, it also gives new contributors something fun to do for a PR
@@ -49,25 +49,5 @@
 </template>
 
 <style scoped lang="scss">
-  .main-content-display {
-    display: flex;
-    flex-direction: column;
-    flex: 1 auto;
-    padding: 20px;
 
-    .introduction-section {
-      text-align: center;
-      padding: 0px;
-      color: #fff;
-      padding-top: 75px;
-      margin-bottom: 75px;
-    }
-
-    .main-project-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      column-gap: 20px;
-    }
-
-  }
 </style>

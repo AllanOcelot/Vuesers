@@ -1,0 +1,21 @@
+// Main Body 
+.main-content-display {
+  display: flex;
+  flex-direction: column;
+  flex: 1 auto;
+  padding: 20px;
+
+  .introduction-section {
+    text-align: center;
+    padding: 0px;
+    color: #fff;
+    padding-top: 75px;
+    margin-bottom: 75px;
+  }
+
+  .main-project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
+  }
+}

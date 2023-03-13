@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import Sidebar from '@/components/Sidebar.vue'
 </script>
 
 <template>
@@ -14,9 +15,11 @@ import { RouterLink, RouterView } from 'vue-router'
   </header>
 -->
 
+  <Sidebar />
+
   <RouterView />
 </template>
 
-<style scoped lang="scss">
-
+<style lang="scss">
+  @import "./assets/styles.scss";
 </style>
