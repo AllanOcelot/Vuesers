@@ -9,6 +9,7 @@ export default defineConfig({
     preprocessorOptions : {
       scss : {
         additionalData:  `
+        @import "./src/assets/_transitions.scss";
         @import "./src/assets/_variables.scss";
         `
       }
