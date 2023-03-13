@@ -5,8 +5,8 @@
 <template>
   <div class="main-content-display">
     <div class="introduction-section">
-      <h2>About Vuesers</h2>
-      <p>the world is a spoon and I am a fork.</p>
+      <h2>Contributing to Open Source</h2>
+      <p>A simple guide on how and why to contribute to open source projects.</p>
     </div>
   </div>
 </template>

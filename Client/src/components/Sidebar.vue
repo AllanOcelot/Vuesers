@@ -1,4 +1,9 @@
 <script setup lang="ts">
+  import {useRoute} from 'vue-router'
+  import {computed} from 'vue'
+
+  const route=useRoute();
+  const currentRoute = computed(() =>route.name)
 
   // Display the login modal.
   function showLogin(){
@@ -10,50 +15,50 @@
 <template>
   <div class="sidebar-main">
     <div class="top-section">
-      <RouterLink to="/" class="router-home">Vuesers</RouterLink>
+      <RouterLink to="/projects" class="router-home">Vuesers</RouterLink>
       <p>Find open source VueJS projects.</p>
     </div>
     <div class="mid">
       <ul class="links-menu">
-        <li class="active">
-          <a href="/">
+        <li :class="{active : currentRoute === 'projects'}">
+          <router-link to="/">
             <span class="icon">
               <i class="lni lni-folder"></i>
             </span>
             Projects
-          </a>
+          </router-link>
         </li>
-        <li>
-          <a href="/">
+        <li :class="{active : currentRoute === 'about'}">
+          <router-link to="/about">
             <span class="icon">
               <i class="lni lni-question-circle"></i>
             </span>
             About Vuesers
-          </a>
+          </router-link>
         </li>
-        <li>
-          <a href="/">
+        <li :class="{active : currentRoute === 'contribute'}">
+          <router-link to="/contribute">
             <span class="icon">
               <i class="lni lni-book"></i>
             </span>
             Contributing to open source
-          </a>
+          </router-link>
         </li>
-        <li>
-          <a href="/">
+        <li :class="{active : currentRoute === 'submit'}">
+          <router-link to="/submit">
             <span class="icon">
               <i class="lni lni-arrow-up"></i>
             </span>
             Submit your project
-          </a>
+          </router-link>
         </li>
-        <li>
-          <a href="/">
+        <li :class="{active : currentRoute === 'faq'}">
+          <router-link to="/faq">
             <span class="icon">
               <i class="lni lni-check-box"></i>
             </span>
             FAQ
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -85,7 +90,7 @@
       border-bottom: 1px solid #f1f1f183;
       text-align: center;
       .router-home {
-        color: #1cf8af;
+        color: $color-primary;
         font-size: 24px;
         font-weight: bold; 
         opacity: 0.7;
@@ -136,11 +141,11 @@
           &:hover{
             opacity: 1;
             a {
-              color: #1cf8af;
+              color: $color-primary;
             }
           }
           &.active {
-            border-right: 5px solid #1cf8af;
+            border-right: 5px solid $color-primary;
           }
 
         }
@@ -163,7 +168,7 @@
           cursor: pointer;
           border-radius: 4px;
           padding: 10px 20px; 
-          background: #17b181;
+          background: $color-primary;
           color: #fff;
           opacity: 0.8;
           transition: all 0.3s;

@@ -5,8 +5,8 @@
 <template>
   <div class="main-content-display">
     <div class="introduction-section">
-      <h2>About Vuesers</h2>
-      <p>the world is a spoon and I am a fork.</p>
+      <h2>Submit A Project</h2>
+      <p>Are you the owner of a VueJS project of any size? Let us know!</p>
     </div>
   </div>
 </template>
