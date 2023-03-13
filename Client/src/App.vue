@@ -4,20 +4,12 @@ import Sidebar from '@/components/Sidebar.vue'
 </script>
 
 <template>
-  <!--
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
--->
-
   <Sidebar />
-
-  <RouterView />
+  <RouterView v-slot="{Component}">
+    <transition name="slide" mode="out-in">
+      <component :is="Component" :key="$route.path"></component>
+    </transition>
+  </RouterView>
 </template>
 
 <style lang="scss">

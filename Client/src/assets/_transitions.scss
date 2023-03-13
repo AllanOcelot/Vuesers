@@ -1,0 +1,15 @@
+// Transitions.
+
+
+
+// Slide is used for the 'main content' area, on the right hand side of the app.
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.5s, transform 0.6s;
+}
+
+.slide-enter-from,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(-100%);
+}
