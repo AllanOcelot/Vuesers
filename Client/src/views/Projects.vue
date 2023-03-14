@@ -47,7 +47,11 @@
 </template>
 
 <style scoped lang="scss">
-  .main-projects-container {
+
+  .main-project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 20px;
     padding: 0 40px;
   }
 </style>
