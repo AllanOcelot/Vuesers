@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  console.log('About Page')
+  console.log('Contribute Page')
 </script>
 
 <template>
