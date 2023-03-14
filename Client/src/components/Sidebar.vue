@@ -183,9 +183,6 @@
           display: block;
           padding: 5px 0;
           width: 100%;
-          a {
-            color: #fff;
-          }
         }
       }
     }

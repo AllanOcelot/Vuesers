@@ -47,5 +47,7 @@
 </template>
 
 <style scoped lang="scss">
-
+  .main-projects-container {
+    padding: 0 40px;
+  }
 </style>
