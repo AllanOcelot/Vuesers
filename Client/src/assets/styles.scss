@@ -1,9 +1,42 @@
+//
+h1 {
+  font-size: 40px;
+  font-weight: 900;
+}
+h2 {
+  font-size: 36px;
+  font-weight: 700;
+}
+h3 {
+  font-size: 24px;
+  font-weight: 500;
+}
+p {
+  font-size: 18px;
+}
+
+
+a {
+  color: $color-primary;
+  opacity: 0.9;
+  text-decoration: none;
+  transition: all 0.3s;
+  &:hover {
+    text-decoration: underline;
+    opacity: 1;
+  }
+}
+
+
 // Main Body 
 .main-content-display {
   display: flex;
   flex-direction: column;
   flex: 1 auto;
   padding: 20px;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   .introduction-section {
     text-align: center;

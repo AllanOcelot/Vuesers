@@ -15,7 +15,7 @@
 <template>
   <div class="sidebar-main">
     <div class="top-section">
-      <RouterLink to="/projects" class="router-home">Vuesers</RouterLink>
+      <RouterLink to="/" class="router-home">Vuesers</RouterLink>
       <p>Find open source VueJS projects.</p>
     </div>
     <div class="mid">
@@ -80,7 +80,7 @@
 <style scoped lang="scss">
   .sidebar-main {
     display: flex;
-    width: 300px;
+    min-width: 300px;
     background: #0E0E16;
     flex-direction: column;
     height: 100%;
