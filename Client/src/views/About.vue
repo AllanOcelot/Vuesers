@@ -34,6 +34,7 @@
 
 <style scoped lang="scss">
   .about-main-content {
+    padding: 0 40px;
     section {
       margin-bottom: 30px;
       border-bottom: 1px solid rgba(255,255,255,0.1);

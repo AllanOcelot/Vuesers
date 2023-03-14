@@ -6,7 +6,7 @@ import Sidebar from '@/components/Sidebar.vue'
 <template>
   <Sidebar />
   <RouterView v-slot="{Component}">
-    <transition name="slide" mode="out-in">
+    <transition name="fade" mode="out-in">
       <component :is="Component" :key="$route.path"></component>
     </transition>
   </RouterView>
