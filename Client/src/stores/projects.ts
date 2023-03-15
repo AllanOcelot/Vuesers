@@ -20,7 +20,7 @@ export const useProjectsStore = defineStore('projects', () => {
   const projects = ref([] as Project[]);
 
   function checkProjectsPopulated(){
-    return projects.value.length;
+    return projects.value
   }
 
   function $clear(){
@@ -28,7 +28,7 @@ export const useProjectsStore = defineStore('projects', () => {
   }
 
   async function getProjects() {
-    if(projects.value.length === 0){
+    if(checkProjectsPopulated()){
       await axios.get('http://127.0.0.1:3000/projects')
       .then((response) => {
         console.log('pinia has fetched our projects via node....')

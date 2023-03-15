@@ -15,7 +15,11 @@
   // Projects are fetched via our Pinia Projects Store.
   // This is a bit of a brain melt coming from other store options, but using it via setup and reading the docs with a cup of tea... really make you appreciate how far we have come.
   const store = useProjectsStore()
+
+  // note to self, we need to ensure reactive things, like data, are using storeToRefs
   const { projects } = storeToRefs(store)
+  // Actions / getters, need to be 'deconstructed' to ensure they work.
+  const { getProjects } = store
 
 
 
@@ -29,13 +33,13 @@
 
   // On mount, we want to fetch the list of projects from the store.
   onMounted(() => {
-    store.getProjects()
+    getProjects()
   })
 
 </script>
 
 <template>
-  <div class="main-content-display">
+  <div class="main-content-display" v-if="projects">
     <div class="introduction-section">
       <h2>We have {{ projects.length }} projects that {{getRandomCTA()}}</h2>
       <p>Data last updated on xx/xx/xxxx</p>

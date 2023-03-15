@@ -12,7 +12,7 @@ interface Label {
   updated: Date
 }
 
-export const useProjectsStore = defineStore('projects', () => {
+export const useLabelsStore = defineStore('projects', () => {
   const labels = ref([] as Label[]);
 
   function checkLabelsPopulated(){
@@ -25,7 +25,7 @@ export const useProjectsStore = defineStore('projects', () => {
 
   async function getLabels() {
     if(labels.value.length === 0){
-      await axios.get('http://127.0.0.1:3000/projects')
+      await axios.get('http://127.0.0.1:3000/labels/all')
       .then((response) => {
         console.log('Pinia fetching labels')
         console.log(response.data)
