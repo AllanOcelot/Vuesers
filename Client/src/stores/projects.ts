@@ -43,8 +43,5 @@ export const useProjectsStore = defineStore('projects', () => {
       return
     }
   }
-
-
-
   return { projects, checkProjectsPopulated, getProjects }
 })
