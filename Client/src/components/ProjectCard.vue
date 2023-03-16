@@ -1,23 +1,45 @@
 <script lang="ts">
-import type { PropType } from "vue";
+  import type { PropType } from "vue";
 
-interface Project {
-  title: string,
-  desc: string,
-  color: string,
-  url_website: string,
-  url_github: string,
-  id: number
-}
+  interface Project {
+    title: string,
+    desc: string,
+    color: string,
+    url_website: string,
+    url_github: string,
+    id: number,
+    labels: string
+  }
 </script>
 
 <script setup lang="ts">
-defineProps({
-  project : {
-    type: Object as PropType<Project>,
-    required: true
+  const props = defineProps({
+    project : {
+      type: Object as PropType<Project>,
+      required: true
+    },
+    labels: {
+      type: [],
+      required: true
+    }
+  })
+
+
+  // Label lookup
+  // we pass in a list of labels from the store
+  // our projects will have an array of id's of labels attached to it
+  function getLabelBackground(labelID : string){
+    console.log(labelID)
+    return '#000'
   }
-})
+  function getLabelColor(labelID : string){
+    console.log(labelID)
+    return '#000'
+  }
+  function getLabelName(labelID : string){
+    console.log(labelID)
+    return 'name'
+  }
 </script>
 
 <template>
@@ -28,15 +50,15 @@ defineProps({
     </div>
     <div class="mid">
       <div class="labels">
-          <span>Has Docs</span>
-          <span>Is Active</span>
-          <span>Archived</span>
-          <span>Alpha</span>
-          <span>Released</span>
+          <div class="projectLabel" 
+              v-for="item in JSON.parse(project.labels)"
+              :style="`background-color:#${getLabelBackground(item)}; color:#${getLabelColor(item)};`"
+            >
+              {{getLabelName(item)}}
+          </div>
       </div>
     </div>
     <div class="bottom">
-
       <div class="links">
         <a v-if="project.url_github" :href="project.url_github" target="_blank" title="View Repo on Github">
           <i class="lni lni-github-original"></i>
@@ -69,14 +91,6 @@ defineProps({
       .labels {
         width: 100%;
         text-align: center;
-        span {
-          display: inline-block;
-          margin: 0 5px 5px 0;
-          padding: 4px 8px;
-          border-radius: 6px;
-          color: #000;
-          background-color: #fff;
-        }
       }
     }
 

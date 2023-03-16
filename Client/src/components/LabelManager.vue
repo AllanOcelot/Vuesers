@@ -9,7 +9,6 @@
 
   // Stores 
   import { useLabelsStore } from '@/stores/labels'
-
   const store = useLabelsStore()
 
   // On mounted, get a list of all labels, published and unpublished.
@@ -24,7 +23,7 @@
     <div>
       <p>Create new label here...</p>
       <div class="labels">
-        <div class="label" v-for="item in store.labels" :key="item.id" 
+        <div class="projectLabel" v-for="item in store.labels" :key="item.id" 
           :style="`background-color:#${item.backgroundColor}; color:#${item.textColor};`" >
           {{ item.name }}
         </div>
