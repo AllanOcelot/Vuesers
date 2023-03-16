@@ -16,32 +16,34 @@ interface Project {
   updated: Date
 }
 
-export const useProjectsStore = defineStore('projects', () => {
-  const projects = ref([] as Project[]);
+export const useProjectsStore = defineStore('projects', {
+  state: () => {
+    return {
+      projects: []
+    }
+  },
 
-  function checkProjectsPopulated(){
-    return projects.value
-  }
+  actions: {
+    checkProjectsPopulated(){
+      return this.projects.length > 0
+    },
 
-  function $clear(){
-    projects.value = [] as Project[];
-  }
-
-  async function getProjects() {
-    if(checkProjectsPopulated()){
-      await axios.get('http://127.0.0.1:3000/projects')
-      .then((response) => {
-        console.log('pinia has fetched our projects via node....')
-        console.log(response.data)
-        projects.value = response.data;
-        return;
-      }).catch(error => {
-        console.log('Could not fetch posts ' + error);
-        return;
-      })
-    }else{
-      return
+    async getProjects(){
+      if(!this.checkProjectsPopulated()){
+        console.log('es')
+        await axios.get('http://127.0.0.1:3000/projects')
+        .then((response) => {
+          console.log('pinia has fetched our projects via node....')
+          console.log(response.data)
+          this.projects = response.data;
+          return;
+        }).catch(error => {
+          console.log('Could not fetch posts ' + error);
+          return;
+        })
+      }else{
+        return
+      }
     }
   }
-  return { projects, checkProjectsPopulated, getProjects }
 })
