@@ -19,7 +19,6 @@
   onMounted(() => {
     store.getProjects()
   })
-
 </script>
 
 <template>

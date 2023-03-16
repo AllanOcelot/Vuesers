@@ -10,17 +10,11 @@
   // Stores 
   import { useLabelsStore } from '@/stores/labels'
 
-
-
-  // Labels store.
   const store = useLabelsStore()
-  const { labels } = storeToRefs(store)
-  const { getLabels } = store
-
 
   // On mounted, get a list of all labels, published and unpublished.
   onMounted(() => {
-    getLabels()
+    store.getLabels()
   })
 
 </script>
