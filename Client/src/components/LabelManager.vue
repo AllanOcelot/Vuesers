@@ -23,7 +23,12 @@
   <div>
     <div>
       <p>Create new label here...</p>
-      {{ store.labels }}
+      <div class="labels">
+        <div class="label" v-for="item in store.labels" :key="item.id" 
+          :style="`background-color:#${item.backgroundColor}; color:#${item.textColor};`" >
+          {{ item.name }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
