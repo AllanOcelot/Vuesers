@@ -116,21 +116,6 @@ a {
   }
 }
 
-.projectLabel {
-  cursor: pointer;
-  background: #f1f1f1;
-  color: #000;
-  padding: 6px 15px;
-  border-radius: 6px;
-  text-align: center;
-  display: inline-block;
-  opacity: 0.75;
-  transition: all 0.3s;
-  transition-delay: 0.2s;
-  &:hover{
-    opacity: 1;
-  }
-}
 
 // Main Body 
 .main-content-display {

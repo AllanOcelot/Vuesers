@@ -94,6 +94,7 @@ async function getAllLabels(){
       delete item.collectionName
       sanitisedLabels.push(item)
     })
+    console.log(sanitisedLabels)
     return sanitisedLabels;
   }else{
     console.log('auth not valid.');

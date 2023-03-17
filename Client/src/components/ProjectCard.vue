@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { PropType } from "vue";
+  
 
   interface Project {
     title: string,
@@ -13,33 +14,15 @@
 </script>
 
 <script setup lang="ts">
+  import ProjectLabel from '@/components/ProjectLabel.vue'
+
   const props = defineProps({
     project : {
       type: Object as PropType<Project>,
       required: true
-    },
-    labels: {
-      type: [],
-      required: true
     }
   })
 
-
-  // Label lookup
-  // we pass in a list of labels from the store
-  // our projects will have an array of id's of labels attached to it
-  function getLabelBackground(labelID : string){
-    console.log(labelID)
-    return '#000'
-  }
-  function getLabelColor(labelID : string){
-    console.log(labelID)
-    return '#000'
-  }
-  function getLabelName(labelID : string){
-    console.log(labelID)
-    return 'name'
-  }
 </script>
 
 <template>
@@ -50,12 +33,12 @@
     </div>
     <div class="mid">
       <div class="labels">
-          <div class="projectLabel" 
-              v-for="item in JSON.parse(project.labels)"
-              :style="`background-color:#${getLabelBackground(item)}; color:#${getLabelColor(item)};`"
-            >
-              {{getLabelName(item)}}
-          </div>
+       <ProjectLabel v-for="item in project.labels" :label="item" />
+        <p v-if="!project.labels">
+          <small>
+            There are no labels for this project.
+          </small>
+          </p>
       </div>
     </div>
     <div class="bottom">
@@ -73,6 +56,8 @@
 
 <style scoped lang="scss">
   .project-card {
+    display: flex;
+    flex-direction: column;
     background: #fff;
     color: #000;
 
@@ -84,18 +69,26 @@
     }
 
     .mid {
+      display: flex;
+      flex-direction: column;
       padding: 10px 20px 5px 20px;
       background: #f1f1f1;
       border-top: 1px solid rgba(0,0,0,0.25);
       border-bottom: 1px solid rgba(0,0,0,0.25);
+      flex: 1 auto;
+      justify-content: center;
       .labels {
         width: 100%;
         text-align: center;
+        p {
+          margin-bottom: 5px;
+        }
       }
     }
 
     .bottom {
       padding: 10px 20px;
+      margin: auto 0 0 0;
       .links {
         width: 100%;
         a{

@@ -7,7 +7,6 @@
   // Components
   import ProjectCard from '@/components/ProjectCard.vue'
 
-
   // Stores 
   const storeProjects = useProjectsStore()
   const storeLabels = useLabelsStore()
@@ -19,13 +18,14 @@
   }
 
   // On mount, we want to fetch the list of projects from the store.
-  onMounted(() => {
-    storeProjects.getProjects()
+  onMounted(async () => {
+     await storeProjects.getProjects()
+     await storeLabels.getLabels()
   })
 </script>
 
 <template>
-  <div class="main-content-display" v-if="storeProjects.projects">
+  <div class="main-content-display" v-if="storeProjects.projects.length > 0 && storeLabels.labels.length > 0">
     <div class="introduction-section">
       <h2>We have {{ storeProjects.projects.length }} projects that {{getRandomCTA()}}</h2>
       <p>Data last updated on xx/xx/xxxx</p>

@@ -16,20 +16,26 @@ interface Label {
 export const useLabelsStore = defineStore('labels', {
   state: () => {
     return {
-      labels: [] as Label[]
+      labels: []
     }
   },
 
   actions: {
     async getLabels(){
-      await axios.get('http://127.0.0.1:3000/labels/all')
-      .then((response) => {
-        this.labels = response.data;
-        return;
-      }).catch(error => {
-        console.log('Could not fetch labels ' + error);
-        return;
-      })
+      if(!this.labels.length){
+        await axios.get('http://127.0.0.1:3000/labels/all')
+        .then((response) => {
+          this.labels = response.data;
+          return;
+        }).catch(error => {
+          console.log('Could not fetch labels ' + error);
+          return;
+        })
+      }else {
+        console.log('We should have labels already, their data is ')
+        console.log(this.labels)
+        return
+      }
     }
-  }
+  },
 })
