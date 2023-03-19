@@ -21,16 +21,12 @@
           <p>Give some extra information on what you are looking for, or what your project does</p>
           <textarea name="" id="" cols="30" rows="10"></textarea>
         </section>
-        <section>
-          <h3>Labels</h3>
-          <p>Labels allow users to quickly identify projects they might be interested in.</p>
-          <LabelManager/>
-        </section>
       </div>
-      <div class="project-preview">
-          <div class="project-preview-container">
-            <h3>Project preview</h3>
-          </div>
+      <div class="additional-details">
+        <section>
+          <h4>Labels</h4>
+          <LabelManager />
+        </section>
       </div>
     </div>
   </div>
@@ -49,12 +45,14 @@
       flex-direction: row;
       flex: 1 auto;
       .project-information {
-        width: 40%;
+        width: 70%;
       }
-      .project-preview {
-        width: 60%;
-        .project-preview-container {
-          text-align: center;
+      .additional-details {
+        width: 30%;
+        section {
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid rgba(255,255,255,0.1);
         }
       }
     }

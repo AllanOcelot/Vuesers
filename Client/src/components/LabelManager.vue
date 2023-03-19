@@ -27,7 +27,6 @@
 <template>
   <div>
     <div>
-      <p>Create new label here...</p>
       <div class="labels">
         <ProjectLabel v-for="item in store.labels" :key="item.id" :label="item.id" />
       </div>
@@ -36,4 +35,13 @@
 </template>
 
 <style scoped lang="scss">
+  .labels {
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    .projectLabel {
+      width: 100%;
+    }
+  }
+
 </style>
