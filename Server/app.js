@@ -49,11 +49,53 @@ const AuthenticateNormalUser = async function(username, pw){
 // Fetch a listing of all records.
 async function getAllRecords(){
   const isAuthed = await AuthenticateNormalUser(process.env.ROLE_VIEW, process.env.ROLE_VIEW_PW);
+
+
   if(pb.authStore.isValid){
-    const records = await pb.collection('projects').getFullList({
+    let sanitisedProjects = [];
+
+    const projects = await pb.collection('projects').getFullList({
       sort: '-created',
     });
-    return records;
+
+    // Loop over and remove some info.
+    projects.forEach(item => {
+      delete item.collectionId
+      delete item.collectionName
+      sanitisedProjects.push(item)
+    })
+    return sanitisedProjects;
+  }else{
+    console.log('auth not valid.');
+    return;
+  }
+}
+
+
+
+
+
+
+async function getAllLabels(){
+  const isAuthed = await AuthenticateNormalUser(process.env.ROLE_VIEW, process.env.ROLE_VIEW_PW);
+
+
+  if(pb.authStore.isValid){
+    let sanitisedLabels = [];
+
+    const labels = await pb.collection('projectLabels').getFullList({
+      sort: '-created',
+      filter: 'approved = true',
+    });
+
+    // Loop over and remove some info.
+    labels.forEach(item => {
+      delete item.collectionId
+      delete item.collectionName
+      sanitisedLabels.push(item)
+    })
+    console.log(sanitisedLabels)
+    return sanitisedLabels;
   }else{
     console.log('auth not valid.');
     return;
@@ -65,7 +107,6 @@ async function getAllRecords(){
 //////// ROUTING
 ///////////////////////////////////////////////////
 
-// Get a list of all projects, no filters.
 app.get('/projects', async (req, res) => {
   try {
     const result = await getAllRecords();
@@ -76,7 +117,30 @@ app.get('/projects', async (req, res) => {
   }
 })
 
+
+app.get('/labels/all', async (req, res) => {
+  try {
+    const result = await getAllLabels();
+    res.json(result);
+  }
+  catch (error){
+    console.log(error);
+  }
+})
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////
+//////// "It's eyes, awake, like glass of fire."
+///////////////////////////////////////////////////
 app.listen(port, () => {
-  console.log('Hello friend....');
+  console.log('Hello friend...');
   console.log(`Example app listening on port ${port}`)
 })

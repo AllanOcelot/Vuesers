@@ -1,23 +1,28 @@
 <script lang="ts">
-import type { PropType } from "vue";
+  import type { PropType } from "vue";
+  
 
-interface Project {
-  title: string,
-  desc: string,
-  color: string,
-  url_website: string,
-  url_github: string,
-  id: number
-}
+  interface Project {
+    title: string,
+    desc: string,
+    color: string,
+    url_website: string,
+    url_github: string,
+    id: number,
+    labels: string
+  }
 </script>
 
 <script setup lang="ts">
-defineProps({
-  project : {
-    type: Object as PropType<Project>,
-    required: true
-  }
-})
+  import ProjectLabel from '@/components/ProjectLabel.vue'
+
+  const props = defineProps({
+    project : {
+      type: Object as PropType<Project>,
+      required: true
+    }
+  })
+
 </script>
 
 <template>
@@ -28,15 +33,15 @@ defineProps({
     </div>
     <div class="mid">
       <div class="labels">
-          <span>Has Docs</span>
-          <span>Is Active</span>
-          <span>Archived</span>
-          <span>Alpha</span>
-          <span>Released</span>
+       <ProjectLabel v-for="item in project.labels" :label="item" />
+        <p v-if="!project.labels">
+          <small>
+            There are no labels for this project.
+          </small>
+          </p>
       </div>
     </div>
     <div class="bottom">
-
       <div class="links">
         <a v-if="project.url_github" :href="project.url_github" target="_blank" title="View Repo on Github">
           <i class="lni lni-github-original"></i>
@@ -51,6 +56,8 @@ defineProps({
 
 <style scoped lang="scss">
   .project-card {
+    display: flex;
+    flex-direction: column;
     background: #fff;
     color: #000;
 
@@ -62,26 +69,26 @@ defineProps({
     }
 
     .mid {
+      display: flex;
+      flex-direction: column;
       padding: 10px 20px 5px 20px;
       background: #f1f1f1;
       border-top: 1px solid rgba(0,0,0,0.25);
       border-bottom: 1px solid rgba(0,0,0,0.25);
+      flex: 1 auto;
+      justify-content: center;
       .labels {
         width: 100%;
         text-align: center;
-        span {
-          display: inline-block;
-          margin: 0 5px 5px 0;
-          padding: 4px 8px;
-          border-radius: 6px;
-          color: #000;
-          background-color: #fff;
+        p {
+          margin-bottom: 5px;
         }
       }
     }
 
     .bottom {
       padding: 10px 20px;
+      margin: auto 0 0 0;
       .links {
         width: 100%;
         a{
