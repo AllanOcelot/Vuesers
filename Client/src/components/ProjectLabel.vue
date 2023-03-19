@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
   import { onMounted } from 'vue'
   import { storeToRefs } from 'pinia'
   import { reactive } from 'vue'
@@ -22,13 +22,26 @@
     valid: false,
   })
 
+
+  interface Item {
+    id: string
+    name: string,
+    backgroundColor: string,
+    textColor: string,
+    created: Date,
+    updated: Date
+  }
+
+
   // Label lookup
-  function labelLookup(labelID){
-    if(labels.value.find(item => item.id === labelID)){
-      let labelData = labels.value.find(item => item.id === labelID);
+  function labelLookup(labelID : String){
+    let labelsArray : Item[];
+    labelsArray = labels.value;
+    if(labelsArray.find(item => item.id as string === labelID)){
+      let labelData : Item = labelsArray.find(item => item.id === labelID)!;
       state.color_background = labelData.backgroundColor;
-      state.color_text = labelData?.textColor;
-      state.name = labelData?.name;
+      state.color_text = labelData.textColor;
+      state.name = labelData.name;
       state.valid = true;
     }else{
       console.log('Tag has not been approved yet');

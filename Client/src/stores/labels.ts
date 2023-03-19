@@ -4,7 +4,7 @@ import { ref } from 'vue'
 
 // Shape of labels.
 interface Label {
-  id: number
+  id: string
   name: string,
   backgroundColor: string,
   textColor: string,
@@ -16,7 +16,7 @@ interface Label {
 export const useLabelsStore = defineStore('labels', {
   state: () => {
     return {
-      labels: []
+      labels: [] as Label[]
     }
   },
 
