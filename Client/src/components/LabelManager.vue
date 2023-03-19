@@ -5,11 +5,17 @@
 
   // Components
   import ProjectCard from '@/components/ProjectCard.vue'
-
+  import ProjectLabel from '@/components/ProjectLabel.vue'
 
   // Stores 
   import { useLabelsStore } from '@/stores/labels'
   const store = useLabelsStore()
+
+
+  
+  interface Label {
+
+  }
 
   // On mounted, get a list of all labels, published and unpublished.
   onMounted(() => {
@@ -23,10 +29,7 @@
     <div>
       <p>Create new label here...</p>
       <div class="labels">
-        <div class="projectLabel" v-for="item in store.labels" :key="item.id" 
-          :style="`background-color:#${item.backgroundColor}; color:#${item.textColor};`" >
-          {{ item.name }}
-        </div>
+        <ProjectLabel v-for="item in store.labels" :key="item.id" :label="item.id" />
       </div>
     </div>
   </div>
